@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="En-têtesPrécompilés">
+      <UniqueIdentifier>{96905b04-9907-42b3-aac0-4d320c6f9b87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dlls">
+      <UniqueIdentifier>{25079223-6d81-479c-b54b-df13047e3b40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Animations">
+      <UniqueIdentifier>{9ed0a21d-58fc-4567-a92e-94cf3743e0ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Animations">
+      <UniqueIdentifier>{b7493df3-2a3d-4764-a74a-58c47905f880}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Bullets">
+      <UniqueIdentifier>{565bf2b8-f556-4930-a24d-2b8eaf8edbc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Scenes">
+      <UniqueIdentifier>{eb401efe-5d42-4b12-a9ff-fae6d353255e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Player">
+      <UniqueIdentifier>{8610924a-0c05-461b-856b-a8d87f9a7f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Enemy">
+      <UniqueIdentifier>{e852fa78-11e5-4c59-b48a-467a01bf0f2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Scenes">
+      <UniqueIdentifier>{8e4e43b7-4dc5-4292-b2df-10bff59b9460}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Player">
+      <UniqueIdentifier>{c89c0863-3d05-4c42-8ae6-a84a2dc02896}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Bullet">
+      <UniqueIdentifier>{c00575ec-d384-483a-9f3e-bdf11ebab951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Enemy">
+      <UniqueIdentifier>{79774b0a-7068-4a44-b726-2f3f5e312eea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Interfaces">
+      <UniqueIdentifier>{4d9f8da0-8f26-4d9b-8cc6-0679aff21f47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\PubSub">
+      <UniqueIdentifier>{6bec72a9-50e5-4366-8e06-c0757d3d6cbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Bonus">
+      <UniqueIdentifier>{b2747dac-09ae-4770-98b6-07cbdd72b5fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Bonus">
+      <UniqueIdentifier>{c1e98dc2-154e-460a-bfe6-0c60c944045a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game">
+      <UniqueIdentifier>{434cb0cd-0dd5-483c-b756-b073eaccbea4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game">
+      <UniqueIdentifier>{e7d2b815-24b8-4105-bfd1-f3f1edbde5c6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>En-têtesPrécompilés</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentManager.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Inputs.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="CyclicAnimation.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="InputBasedAnimation.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearAnimation.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="Hud.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Fichiers d%27en-tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneFactory.h">
+      <Filter>Fichiers d%27en-tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="scenetype.h">
+      <Filter>Fichiers d%27en-tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Fichiers d%27en-tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneResult.h">
+      <Filter>Fichiers d%27en-tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneInfo.h">
+      <Filter>Fichiers d%27en-tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Level01.h">
+      <Filter>Fichiers d%27en-tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="EndScene.h">
+      <Filter>Fichiers d%27en-tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Fichiers d%27en-tête\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBullet.h">
+      <Filter>Fichiers d%27en-tête\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationFrame.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Fichiers d%27en-tête\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipAnimation.h">
+      <Filter>Fichiers d%27en-tête\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Fichiers d%27en-tête\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="StandardEnemyAnimation.h">
+      <Filter>Fichiers d%27en-tête\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="StandardEnemy.h">
+      <Filter>Fichiers d%27en-tête\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBullet.h">
+      <Filter>Fichiers d%27en-tête\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="ISoundPlayer.h">
+      <Filter>Fichiers d%27en-tête\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IUpdatable.h">
+      <Filter>Fichiers d%27en-tête\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Publisher.h">
+      <Filter>Fichiers d%27en-tête\PubSub</Filter>
+    </ClInclude>
+    <ClInclude Include="Subscriber.h">
+      <Filter>Fichiers d%27en-tête\PubSub</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>Fichiers d%27en-tête\PubSub</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthBonus.h">
+      <Filter>Fichiers d%27en-tête\Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="Bonus.h">
+      <Filter>Fichiers d%27en-tête\Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="SmartGunBonus.h">
+      <Filter>Fichiers d%27en-tête\Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGame.h">
+      <Filter>Fichiers d%27en-tête\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Fichiers d%27en-tête\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SmartGun.h">
+      <Filter>Fichiers d%27en-tête\Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="BossEnemy.h">
+      <Filter>Fichiers d%27en-tête\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BossEnemyAnimation.h">
+      <Filter>Fichiers d%27en-tête\Enemy</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>En-têtesPrécompilés</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentManager.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Inputs.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="CyclicAnimation.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="InputBasedAnimation.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearAnimation.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="Hud.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Fichiers sources\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Fichiers sources\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneFactory.cpp">
+      <Filter>Fichiers sources\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Level01.cpp">
+      <Filter>Fichiers sources\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="EndScene.cpp">
+      <Filter>Fichiers sources\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationFrame.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="ShipAnimation.cpp">
+      <Filter>Fichiers sources\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Fichiers sources\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Fichiers sources\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBullet.cpp">
+      <Filter>Fichiers sources\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="StandardEnemyAnimation.cpp">
+      <Filter>Fichiers sources\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="StandardEnemy.cpp">
+      <Filter>Fichiers sources\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBullet.cpp">
+      <Filter>Fichiers sources\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="random.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Publisher.cpp">
+      <Filter>Fichiers d%27en-tête\PubSub</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthBonus.cpp">
+      <Filter>Fichiers sources\Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="Bonus.cpp">
+      <Filter>Fichiers sources\Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="SmartGunBonus.cpp">
+      <Filter>Fichiers sources\Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseGame.cpp">
+      <Filter>Fichiers sources\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Fichiers sources\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="SmartGun.cpp">
+      <Filter>Fichiers sources\Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="BossEnemyAnimation.cpp">
+      <Filter>Fichiers sources\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BossEnemy.cpp">
+      <Filter>Fichiers sources\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Fichiers sources\Enemy</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\extern\SFML\bin\openal32.dll" />
+    <CopyFileToFolders Include="..\extern\SFML\bin\sfml-audio-2.dll" />
+    <CopyFileToFolders Include="..\extern\SFML\bin\sfml-audio-d-2.dll" />
+    <CopyFileToFolders Include="..\extern\SFML\bin\sfml-graphics-2.dll" />
+    <CopyFileToFolders Include="..\extern\SFML\bin\sfml-graphics-d-2.dll" />
+    <CopyFileToFolders Include="..\extern\SFML\bin\sfml-network-2.dll" />
+    <CopyFileToFolders Include="..\extern\SFML\bin\sfml-network-d-2.dll" />
+    <CopyFileToFolders Include="..\extern\SFML\bin\sfml-system-2.dll" />
+    <CopyFileToFolders Include="..\extern\SFML\bin\sfml-system-d-2.dll" />
+    <CopyFileToFolders Include="..\extern\SFML\bin\sfml-window-2.dll" />
+    <CopyFileToFolders Include="..\extern\SFML\bin\sfml-window-d-2.dll" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,5 @@
+root = true
+
+[*.{cpp,h,hpp}]
+# Désactive C26495 (variable membre non initialisée)
+cpp_code_analysis_26495 = none
