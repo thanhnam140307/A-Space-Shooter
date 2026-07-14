@@ -35,32 +35,25 @@ public:
 	virtual void draw(sf::RenderWindow& window) const override;
 	virtual void init(SceneInfo* _previousSceneInfo = nullptr) override;
 	virtual void uninit() override;
-	virtual void handleEvents(sf::RenderWindow& window) override;
 	void handleEvent() override;
 private:
 	Inputs inputs;
 	Player player;
 	sf::Sprite backgroundSprite;
 
-	PlayerBullet playerBullet;
 	std::list<PlayerBullet> playerBullets;
 	float playerTimePerShot;
 
-	EnemyBullet enemyBullet;
 	std::list<EnemyBullet> enemyBullets;
 
 	BossEnemy bossEnemy;
 
-	StandardEnemy standardEnemy;
 	std::list<StandardEnemy> standardsEnemies;
 	float timePerEnemy;
 	int nbOfEnemiesToGenerate;
 
-	HealthBonus healthBonus;
-	SmartGunBonus smartGunBonus;
 	std::list<Bonus*> bonuses;
 
-	SmartGun smartGun;
 	std::list<SmartGun> smartGuns;
 
 	Hud hud;

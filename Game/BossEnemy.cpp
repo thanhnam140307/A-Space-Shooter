@@ -4,6 +4,8 @@
 #include "Publisher.h"
 
 const float BossEnemy::HORIZONTAL_SPEED = Level01::SPEED - 2;
+const int BossEnemy::HEALTH_LOSS = 1;
+const int BossEnemy::SHOOT_FRAME = 2;
 
 BossEnemy::BossEnemy() :
 	Enemy(),
@@ -69,7 +71,7 @@ void BossEnemy::onHitBullet()
 	if (getPosition().y < 100.0f)
 		return;
 
-	health -= 1;
+	health -= HEALTH_LOSS;
 	Publisher::notifySubscribers(Event::BossShot, this);
 
 	if (health <= 0)
@@ -78,9 +80,9 @@ void BossEnemy::onHitBullet()
 	}
 }
 
-bool BossEnemy::shoot()
+bool BossEnemy::canShoot()
 {
-	if (bossEnemyAnimation->getNextFrame() <= 2)
+	if (bossEnemyAnimation->getNextFrame() <= SHOOT_FRAME && isActive())
 		return true;
 
 	return false;

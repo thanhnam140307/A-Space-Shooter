@@ -7,5 +7,5 @@ class SmartGunBonus : public Bonus
 public:
 	~SmartGunBonus();
 	virtual void initializeContent(const ContentManager& contentManager) override;
-	void collidesWithPlayer();
+	void handleCollisionWithPlayer();
 };

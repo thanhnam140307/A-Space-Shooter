@@ -16,6 +16,7 @@ public:
 	void updateInputs(float deltaT, const Inputs& inputs);
 	void died(int damage);
 	bool getCanBeKilled() const;
+	bool hasHealthPoints() const;
 	int getHealthPoints() const;
 	void setHealthPoints(int health);
 	int getScore() const;

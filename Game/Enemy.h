@@ -9,5 +9,5 @@ public:
 	virtual void displace(float playerPositionX) = 0;
 	void update(float elaspedTime = 0) override = 0;
 	virtual void onHitBullet() = 0;
-	virtual bool shoot() = 0;
+	virtual bool canShoot() = 0;
 };

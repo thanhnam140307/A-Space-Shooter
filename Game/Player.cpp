@@ -120,6 +120,11 @@ bool Player::getCanBeKilled() const
 	return (isAlive && !isInvincible);
 }
 
+bool Player::hasHealthPoints() const
+{
+	return healthPoints > 0;
+}
+
 int Player::getHealthPoints() const
 {
 	return healthPoints;

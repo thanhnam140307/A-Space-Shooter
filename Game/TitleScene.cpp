@@ -39,11 +39,6 @@ void TitleScene::draw(sf::RenderWindow &window) const
 	window.draw(titleText);
 }
 
-void TitleScene::handleEvents(sf::RenderWindow &window)
-{
-	Scene::handleEvents(window);
-}
-
 void TitleScene::handleEvent()
 {
 	if (event.type == sf::Event::KeyPressed || event.type == sf::Event::JoystickButtonPressed)

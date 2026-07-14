@@ -101,7 +101,7 @@ void StandardEnemy::onHitBullet()
 	}
 }
 
-bool StandardEnemy::shoot() // tirer un bullet seulement
+bool StandardEnemy::canShoot() // tirer un bullet seulement
 {
 	if (standardEnemyAnimation->getNextFrame() == 8 && !hadShot)
 	{

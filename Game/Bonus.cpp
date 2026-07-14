@@ -56,7 +56,7 @@ void Bonus::spawn(const sf::Vector2f& spritePosition)
 	}
 }
 
-void Bonus::collision(Event event)
+void Bonus::handleCollision(Event event)
 {
 	bonusSound.play();
 	Publisher::notifySubscribers(event, this);

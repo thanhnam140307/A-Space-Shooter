@@ -14,7 +14,7 @@ void SmartGunBonus::initializeContent(const ContentManager& contentManager)
 	setScale(Bonus::SCALE, Bonus::SCALE);
 }
 
-void SmartGunBonus::collidesWithPlayer()
+void SmartGunBonus::handleCollisionWithPlayer()
 {
-	Bonus::collision(Event::GetSmartGunBonus);
+	Bonus::handleCollision(Event::GetSmartGunBonus);
 }

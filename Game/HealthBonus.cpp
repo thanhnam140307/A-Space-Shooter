@@ -14,7 +14,7 @@ void HealthBonus::initializeContent(const ContentManager& contentManager)
 	setScale(Bonus::SCALE, Bonus::SCALE);
 }
 
-void HealthBonus::collidesWithPlayer()
+void HealthBonus::handleCollisionWithPlayer()
 {
-	Bonus::collision(Event::GetHealthBonus);
+	Bonus::handleCollision(Event::GetHealthBonus);
 }

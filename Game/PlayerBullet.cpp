@@ -7,7 +7,6 @@ void PlayerBullet::initializeContent(const ContentManager& contentManager)
 	Bullet::setSoundBuffer(contentManager.getPlayerGunSound());
 	setTexture(contentManager.getGuardianAlyssaBmp());
 	setTextureRect(sf::IntRect(264, 106, 15, 5));
-	setScale(2.0f, 2.0f);
 	setRotation(90.0f);
 }
 

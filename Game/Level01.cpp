@@ -69,7 +69,7 @@ void Level01::update(float _deltaT)
 	hud.setScoreText(player.getScore());
 	hud.setNbOfSmartGunText(player.getNbOfSmartGun());
 
-	if (player.getHealthPoints() <= 0)
+	if (!player.hasHealthPoints())
 	{
 		gameOver();
 	}
@@ -154,19 +154,25 @@ void Level01::init(SceneInfo* /*_previousSceneInfo*/)
 
 	player.initializeContent(contentManager);
 
+	PlayerBullet playerBullet;
 	playerBullet.initializeContent(contentManager);
+	EnemyBullet enemyBullet;
 	enemyBullet.initializeContent(contentManager);
+	StandardEnemy standardEnemy;
 	standardEnemy.initializeContent(contentManager);
 
 	for (int i = 0; i < INITIAL_AMOUNT; i++)
 	{
-		playerBullets.push_back(PlayerBullet(playerBullet));
-		enemyBullets.push_back(EnemyBullet(enemyBullet));
-		standardsEnemies.push_back(StandardEnemy(standardEnemy));
+		playerBullets.push_back(playerBullet);
+		enemyBullets.push_back(enemyBullet);
+		standardsEnemies.push_back(standardEnemy);
 	}
 
+	HealthBonus healthBonus;
 	healthBonus.initializeContent(contentManager);
+	SmartGunBonus smartGunBonus;
 	smartGunBonus.initializeContent(contentManager);
+	SmartGun smartGun;
 	smartGun.initializeContent(contentManager);
 
 	for (int i = 0; i < INITIAL_AMOUNT / BaseGame::HALF; i++)
@@ -174,7 +180,7 @@ void Level01::init(SceneInfo* /*_previousSceneInfo*/)
 		if (random.next(1, 10) <= Bonus::CHANCE_TO_SPAWN)
 		{
 			bonuses.push_back(new SmartGunBonus(smartGunBonus));
-			smartGuns.push_back(SmartGun(smartGun));
+			smartGuns.push_back(smartGun);
 		}
 
 		else
@@ -201,9 +207,10 @@ SmartGun& Level01::getAvailableSmartGun()
 		position = currentSmartGun.getPosition();
 	}
 
-	SmartGun newSmartGun(smartGun);
-	newSmartGun.spawn(position);
-	smartGuns.push_back(newSmartGun);
+	SmartGun smartGun;
+	smartGun.initializeContent(contentManager);
+	smartGun.spawn(position);
+	smartGuns.push_back(smartGun);
 
 	return smartGuns.back();
 }
@@ -220,10 +227,14 @@ Bonus* Level01::getAvailableBonuses()
 
 	if (random.next(1, 10) <= Bonus::CHANCE_TO_SPAWN)
 	{
+		SmartGunBonus smartGunBonus;
+		smartGunBonus.initializeContent(contentManager);
 		bonuses.push_back(new SmartGunBonus(smartGunBonus));
 	}
 	else
 	{
+		HealthBonus healthBonus;
+		healthBonus.initializeContent(contentManager);
 		bonuses.push_back(new HealthBonus(healthBonus));
 	}
 
@@ -241,9 +252,10 @@ StandardEnemy& Level01::getAvailableEnemy()
 		}
 	}
 
-	StandardEnemy newStandardEnemy(standardEnemy);
-	newStandardEnemy.spawn();
-	standardsEnemies.push_back(newStandardEnemy);
+	StandardEnemy standardEnemy;
+	standardEnemy.initializeContent(contentManager);
+	standardEnemy.spawn();
+	standardsEnemies.push_back(standardEnemy);
 
 	return standardsEnemies.back();
 }
@@ -258,7 +270,9 @@ PlayerBullet& Level01::getAvailablePlayerBullet()
 		}
 	}
 
-	playerBullets.push_back(PlayerBullet(playerBullet));
+	PlayerBullet playerBullet;
+	playerBullet.initializeContent(contentManager);
+	playerBullets.push_back(playerBullet);
 
 	return playerBullets.back();
 }
@@ -273,6 +287,8 @@ EnemyBullet& Level01::getAvailableEnemyBullet()
 		}
 	}
 
+	EnemyBullet enemyBullet;
+	enemyBullet.initializeContent(contentManager);
 	enemyBullets.push_back(EnemyBullet(enemyBullet));
 
 	return enemyBullets.back();
@@ -347,7 +363,7 @@ void Level01::handleBonuses(float _deltaT)
 
 		if (bonus->collidesWith(player))
 		{
-			bonus->collidesWithPlayer();
+			bonus->handleCollisionWithPlayer();
 		}
 	}
 }
@@ -371,7 +387,7 @@ void Level01::handleEnemies(float playerPositionX)
 		currentStandardEnemy.displace(playerPositionX);
 		currentStandardEnemy.update();
 
-		if (currentStandardEnemy.shoot())
+		if (currentStandardEnemy.canShoot())
 		{
 			getAvailableEnemyBullet().fire(currentStandardEnemy.getPosition());
 		}
@@ -404,16 +420,16 @@ void Level01::handleBoss(float playerPositionX)
 		spawnBoss();
 	}
 
+	bossEnemy.displace(playerPositionX);
+	bossEnemy.update();
+
+	if (bossEnemy.canShoot())
+	{
+		getAvailableEnemyBullet().fire(bossEnemy.getPosition());
+	}
+
 	if (bossEnemy.isActive())
 	{
-		bossEnemy.displace(playerPositionX);
-		bossEnemy.update();
-
-		if (bossEnemy.shoot())
-		{
-			getAvailableEnemyBullet().fire(bossEnemy.getPosition());
-		}
-
 		for (PlayerBullet& currentPlayerBullet : playerBullets)
 		{
 			if (currentPlayerBullet.collidesWith(bossEnemy))
@@ -422,11 +438,11 @@ void Level01::handleBoss(float playerPositionX)
 				currentPlayerBullet.activate(false);
 			}
 		}
+	}
 
-		if (bossEnemy.collidesWith(player) && player.getCanBeKilled())
-		{
-			player.setHealthPoints(0);
-		}
+	if (bossEnemy.collidesWith(player) && player.getCanBeKilled())
+	{
+		player.setHealthPoints(0);
 	}
 }
 
@@ -444,11 +460,6 @@ void Level01::spawnBoss()
 	}
 
 	bossEnemy.initializeContent(contentManager);
-}
-
-void Level01::handleEvents(sf::RenderWindow& window)
-{
-	Scene::handleEvents(window);
 }
 
 void Level01::handleEvent()

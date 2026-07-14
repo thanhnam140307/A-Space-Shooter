@@ -7,5 +7,5 @@ class HealthBonus : public Bonus
 public:
 	~HealthBonus();
 	virtual void initializeContent(const ContentManager& contentManager) override;
-	void collidesWithPlayer();
+	void handleCollisionWithPlayer();
 };

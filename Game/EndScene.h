@@ -11,7 +11,6 @@ public:
 	void uninit() override;
 
 	void draw(sf::RenderWindow& window) const override;
-	void handleEvents(sf::RenderWindow& window) override;
 	void handleEvent() override;
 	void pause() override;
 	void unPause() override;

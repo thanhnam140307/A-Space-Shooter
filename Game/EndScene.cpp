@@ -57,11 +57,6 @@ void EndScene::draw(sf::RenderWindow &window) const
 	window.draw(returnText);
 }
 
-void EndScene::handleEvents(sf::RenderWindow &window)
-{
-	Scene::handleEvents(window);
-}
-
 void EndScene::handleEvent()
 {
 	if (event.type == sf::Event::KeyReleased || event.type == sf::Event::JoystickButtonReleased)

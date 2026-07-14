@@ -19,8 +19,8 @@ public:
 	void setSoundBuffer(const sf::SoundBuffer& soundbuffer) override;
 	virtual void update(float elapsedTime) override;
 	void spawn(const sf::Vector2f& spritePosition);
-	virtual void collidesWithPlayer() = 0;
-	void collision(Event event);
+	virtual void handleCollisionWithPlayer() = 0;
+	void handleCollision(Event event);
 
 private:
 	sf::Sound bonusSound;

@@ -42,6 +42,7 @@ void Bullet::fire(const sf::Vector2f& spritePosition)
 void Bullet::initializeContent(const ContentManager& contentManager)
 {
 	GameObject::initializeContent(contentManager);
+	setScale(2.0f, 2.0f);
 }
 
 void Bullet::setSoundBuffer(const sf::SoundBuffer& soundbuffer)

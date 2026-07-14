@@ -20,7 +20,7 @@ public:
 	void displace(float playerPositionX) override;
 	void update(float elaspedTime = 0) override;
 	void onHitBullet() override;
-	bool shoot() override;
+	bool canShoot() override;
 	void died();
 	bool getIsKamikaze() const;
 
