@@ -2,6 +2,11 @@
 
 Le français suit
 
+<p align="center">
+  <img src="ReadMeImage/standardEnemyBattle.png">
+  <img src="ReadMeImage/bossBattle.png">
+</p>
+
 ## IDE
 Visual Studio 2022
 
