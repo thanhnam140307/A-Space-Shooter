@@ -46,10 +46,15 @@ Colliding with the boss while it is still alive results in instant death. When h
 - **→** Move right
 - **Space** Shoot
 - **Backspace** Become invincible (For developpement)
+- **Esc** Leave the game
 
-### Controller
+### Xbox Controller (!Different Xbox controller might have different button setings)
 - **Left Stick** Move
 - **Right Trigger** Shoot
+- **Right Trigger** Shoot
+- **Button A (0)** Play/Pause
+- **Button Y (3)** Become invincible (For developpement)
+- **Button View (Back) (6)** Leave the game
 
 ---
 
@@ -94,7 +99,11 @@ Entrer en collision avec le boss alors qu'il est encore en vie entraîne une mor
 - **→** Se déplacer vers la droite
 - **Espace** Tirer
 - **Backspace** Être invincible (Pour le développement)
+- **Esc** Quitter le jeux
 
-### Manette
+### Manette (!Différente manette Xbox peut avoir des réglages de boutons différents)
 - **Joystick gauche** Se déplacer
 - **Gâchette droite** Tirer
+- **Bouton A (0)** Continuer/Pause
+- **Bouton Y (3)** Être invincible (Pour le développement)
+- **Bouton View (Back) (6)** Quitter le jeux
