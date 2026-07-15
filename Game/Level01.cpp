@@ -22,10 +22,6 @@ Level01::Level01()
 
 Level01::~Level01()
 {
-	for (Bonus* bonus : bonuses)
-	{
-		delete bonus;
-	}
 }
 
 void Level01::update(float _deltaT)
@@ -84,7 +80,14 @@ void Level01::notify(Event gameEvent, const void* data)
 	else if (gameEvent == Event::EnemyDied)
 	{
 		const StandardEnemy* deadStandardEnemy = (const StandardEnemy*)data;
-		getAvailableBonuses()->spawn(deadStandardEnemy->getPosition());
+
+		if (random.next(1, 5) <= Bonus::CHANCE_TO_SPAWN)
+		{
+			getAvailableSmartGunBonus().spawn(deadStandardEnemy->getPosition());
+		}
+		else 
+			getAvailableHealthBonus().spawn(deadStandardEnemy->getPosition());
+
 	}
 	else if (gameEvent == Event::BossDied)
 	{
@@ -101,9 +104,14 @@ void Level01::draw(sf::RenderWindow& window) const
 		currentSmartGun.draw(window);
 	}
 
-	for (const Bonus* bonus : bonuses)
+	for (const SmartGunBonus& smartGunBonus : smartGunBonuses)
 	{
-		bonus->draw(window);
+		smartGunBonus.draw(window);
+	}
+
+	for (const HealthBonus& healthBonus : healthBonuses)
+	{
+		healthBonus.draw(window);
 	}
 
 	for (const PlayerBullet& currentPlayerBullet : playerBullets)
@@ -179,12 +187,14 @@ void Level01::init(SceneInfo* /*_previousSceneInfo*/)
 	{
 		if (random.next(1, 10) <= Bonus::CHANCE_TO_SPAWN)
 		{
-			bonuses.push_back(new SmartGunBonus(smartGunBonus));
+			smartGunBonuses.push_back(smartGunBonus);
 			smartGuns.push_back(smartGun);
 		}
 
 		else
-			bonuses.push_back(new HealthBonus(healthBonus));
+		{
+			healthBonuses.push_back(healthBonus);
+		}
 	}
 
 	gameIsInitialized = true;
@@ -215,30 +225,36 @@ SmartGun& Level01::getAvailableSmartGun()
 	return smartGuns.back();
 }
 
-Bonus* Level01::getAvailableBonuses()
+SmartGunBonus& Level01::getAvailableSmartGunBonus()
 {
-	for (Bonus* bonus : bonuses)
+	for (SmartGunBonus& currentSmartGunBonus : smartGunBonuses)
 	{
-		if (!bonus->isActive())
+		if (!currentSmartGunBonus.isActive())
 		{
-			return bonus;
+			return currentSmartGunBonus;
 		}
 	}
 
-	if (random.next(1, 10) <= Bonus::CHANCE_TO_SPAWN)
+	SmartGunBonus smartGunBonus;
+	smartGunBonus.initializeContent(contentManager);
+	smartGunBonuses.push_back(smartGunBonus);
+	return smartGunBonuses.back();
+}
+
+HealthBonus& Level01::getAvailableHealthBonus()
+{
+	for (HealthBonus& currentHealthBonus : healthBonuses)
 	{
-		SmartGunBonus smartGunBonus;
-		smartGunBonus.initializeContent(contentManager);
-		bonuses.push_back(new SmartGunBonus(smartGunBonus));
-	}
-	else
-	{
-		HealthBonus healthBonus;
-		healthBonus.initializeContent(contentManager);
-		bonuses.push_back(new HealthBonus(healthBonus));
+		if (!currentHealthBonus.isActive())
+		{
+			return currentHealthBonus;
+		}
 	}
 
-	return bonuses.back();
+	HealthBonus smartGunBonus;
+	smartGunBonus.initializeContent(contentManager);
+	healthBonuses.push_back(smartGunBonus);
+	return healthBonuses.back();
 }
 
 StandardEnemy& Level01::getAvailableEnemy()
@@ -357,13 +373,23 @@ void Level01::handleBonuses(float _deltaT)
 		position = currentSmartGun.getPosition();
 	}
 
-	for (Bonus* bonus : bonuses)
+	for (SmartGunBonus& smartGunBonus : smartGunBonuses)
 	{
-		bonus->update(_deltaT);
+		smartGunBonus.update(_deltaT);
 
-		if (bonus->collidesWith(player))
+		if (smartGunBonus.collidesWith(player))
 		{
-			bonus->handleCollisionWithPlayer();
+			smartGunBonus.handleCollisionWithPlayer();
+		}
+	}
+
+	for (HealthBonus& healthBonus : healthBonuses)
+	{
+		healthBonus.update(_deltaT);
+
+		if (healthBonus.collidesWith(player))
+		{
+			healthBonus.handleCollisionWithPlayer();
 		}
 	}
 }

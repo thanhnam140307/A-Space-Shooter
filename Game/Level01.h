@@ -52,7 +52,8 @@ private:
 	float timePerEnemy;
 	int nbOfEnemiesToGenerate;
 
-	std::list<Bonus*> bonuses;
+	std::list<SmartGunBonus> smartGunBonuses;
+	std::list<HealthBonus> healthBonuses;
 
 	std::list<SmartGun> smartGuns;
 
@@ -61,10 +62,12 @@ private:
 	Random random;
 
 	SmartGun& getAvailableSmartGun();
-	Bonus* getAvailableBonuses();
+	SmartGunBonus& getAvailableSmartGunBonus();
+	HealthBonus& getAvailableHealthBonus();
 	StandardEnemy& getAvailableEnemy();
 	PlayerBullet& getAvailablePlayerBullet();
 	EnemyBullet& getAvailableEnemyBullet();
+
 	void gameOver();
 	void removeSmartGun();
 	void spawnBoss();

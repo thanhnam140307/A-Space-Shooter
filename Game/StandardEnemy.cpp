@@ -77,7 +77,7 @@ void StandardEnemy::displace(float playerPositionX)
 	move(sf::Vector2f(moveX, VERTICAL_SPEED));
 
 	if (getGlobalBounds().top > Game::GAME_HEIGHT + getGlobalBounds().height * 0.5f)
-		setPosition(getPosition().x, 0.0f);
+		setPosition(float(random.next(Level01::LIMIT, Game::GAME_WIDTH - (Level01::LIMIT * 2))), 0.0f);
 }
 
 void StandardEnemy::update(float /*elaspedTime*/)
