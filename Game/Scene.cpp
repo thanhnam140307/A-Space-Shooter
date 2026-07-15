@@ -48,7 +48,7 @@ void Scene::handleEvents(sf::RenderWindow& window)
 	while (window.pollEvent(event))
 	{
 		//x sur la fen?tre
-		if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+		if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) || (event.type == sf::Event::JoystickButtonPressed && event.joystickButton.button == 6))
 		{
 			window.close();
 			gameIsOver = true;

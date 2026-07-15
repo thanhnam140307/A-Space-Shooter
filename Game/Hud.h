@@ -12,6 +12,7 @@ public:
 	void setScoreText(const int score);
 	void setHealthText(const int healthPoints);
 	void setNbOfSmartGunText(const int healthPoints);
+	void setPauseText(const bool isPause);
 
 private:
 	sf::View hudView;
@@ -20,6 +21,7 @@ private:
 	sf::Text healthText;
 	sf::Sprite smartGunBonus;
 	sf::Text nbOfSmartGunText;
+	sf::Text pauseText;
 	sf::Font font;
 };
 

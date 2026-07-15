@@ -9,4 +9,5 @@ enum class Event
 	EnemyDied,
 	BossDied,
 	BossShot,
+	PlayOrPause,
 };

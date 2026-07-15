@@ -16,7 +16,8 @@ Level01::Level01()
 	: Scene(SceneType::LEVEL01),
 	playerTimePerShot(0.0f),
 	timePerEnemy(0.0f),
-	nbOfEnemiesToGenerate(0)
+	nbOfEnemiesToGenerate(0),
+	isInPause(false)
 {
 }
 
@@ -30,45 +31,51 @@ void Level01::update(float _deltaT)
 	//std::cout << "playerBullets: " << playerBullets.size() << ", enemyBullets:" << enemyBullets.size() << std::endl;
 	//std::cout << "standardsEnemies: " << standardsEnemies.size() << " " << nbOfEnemyToKill << std::endl;
 	//std::cout << "bonuses: " << bonuses.size() << std::endl;
-
-	static int cptScrollBackground = 0;
-	backgroundSprite.setTextureRect(sf::IntRect(0, (int)(-1.0f * cptScrollBackground++), Game::GAME_WIDTH, Game::GAME_HEIGHT));
-	player.update(_deltaT);
-	player.updateInputs(_deltaT, inputs);
-
-	if (inputs.shouldFire && playerTimePerShot <= 0.0f)
+	if (!isInPause)
 	{
-		getAvailablePlayerBullet().fire(sf::Vector2f(player.getPosition().x + 22, player.getPosition().y));
-		getAvailablePlayerBullet().fire(sf::Vector2f(player.getPosition().x - 22, player.getPosition().y));
+		static int cptScrollBackground = 0;
+		backgroundSprite.setTextureRect(sf::IntRect(0, (int)(-1.0f * cptScrollBackground++), Game::GAME_WIDTH, Game::GAME_HEIGHT));
+		player.update(_deltaT);
+		player.updateInputs(_deltaT, inputs);
 
-		for (SmartGun& currentSmartGun : smartGuns)
+		if (inputs.shouldFire && playerTimePerShot <= 0.0f)
 		{
-			if (currentSmartGun.isActive())
-				getAvailablePlayerBullet().fire(sf::Vector2f(currentSmartGun.getPosition()));
+			getAvailablePlayerBullet().fire(sf::Vector2f(player.getPosition().x + 22, player.getPosition().y));
+			getAvailablePlayerBullet().fire(sf::Vector2f(player.getPosition().x - 22, player.getPosition().y));
+
+			for (SmartGun& currentSmartGun : smartGuns)
+			{
+				if (currentSmartGun.isActive())
+					getAvailablePlayerBullet().fire(sf::Vector2f(currentSmartGun.getPosition()));
+			}
+
+			playerTimePerShot = 0.1f;
 		}
 
-		playerTimePerShot = 0.1f;
+		handleBullets(_deltaT);
+
+		handleBonuses(_deltaT);
+
+		handleEnemies(player.getPosition().x);
+
+		handleBoss(player.getPosition().x);
+
+		playerTimePerShot -= TIME_PER_FRAME;
+		timePerEnemy -= TIME_PER_FRAME;
+
+		hud.setHealthText(player.getHealthPoints());
+		hud.setScoreText(player.getScore());
+		hud.setNbOfSmartGunText(player.getNbOfSmartGun());
+		hud.setPauseText(false);
+
+		if (!player.hasHealthPoints())
+		{
+			gameOver();
+		}
 	}
 
-	handleBullets(_deltaT);
-
-	handleBonuses(_deltaT);
-
-	handleEnemies(player.getPosition().x);
-
-	handleBoss(player.getPosition().x);
-
-	playerTimePerShot -= TIME_PER_FRAME;
-	timePerEnemy -= TIME_PER_FRAME;
-
-	hud.setHealthText(player.getHealthPoints());
-	hud.setScoreText(player.getScore());
-	hud.setNbOfSmartGunText(player.getNbOfSmartGun());
-
-	if (!player.hasHealthPoints())
-	{
-		gameOver();
-	}
+	else
+		hud.setPauseText(true);
 }
 
 void Level01::notify(Event gameEvent, const void* data)
@@ -85,7 +92,7 @@ void Level01::notify(Event gameEvent, const void* data)
 		{
 			getAvailableSmartGunBonus().spawn(deadStandardEnemy->getPosition());
 		}
-		else 
+		else
 			getAvailableHealthBonus().spawn(deadStandardEnemy->getPosition());
 
 	}
@@ -498,8 +505,16 @@ void Level01::handleEvent()
 		inputs.moveX = inputs.eliminateVibration(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X)) / GAMEPAD_SPEEDRATIO;
 		inputs.shouldFire = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z) < -50;
 
-		if (event.type == sf::Event::JoystickButtonPressed && event.joystickButton.button == 3)
-			inputs.isInvincible = !inputs.isInvincible;
+		if (event.type == sf::Event::JoystickButtonPressed)
+		{
+			if (event.joystickButton.button == 3)
+				inputs.isInvincible = !inputs.isInvincible;
+			if (event.joystickButton.button == 0)
+			{
+				Publisher::notifySubscribers(Event::PlayOrPause, this);
+				isInPause = !isInPause;
+			}
+		}
 
 		//Convertir les données du contrôleur en SPEED
 		if (inputs.moveX > 0.0f)
@@ -527,6 +542,11 @@ void Level01::handleEvent()
 		{
 			if (event.key.code == sf::Keyboard::BackSpace)
 				inputs.isInvincible = !inputs.isInvincible;
+			if (event.key.code == sf::Keyboard::Key::P)
+			{
+				Publisher::notifySubscribers(Event::PlayOrPause, this);
+				isInPause = !isInPause;
+			}
 		}
 	}
 

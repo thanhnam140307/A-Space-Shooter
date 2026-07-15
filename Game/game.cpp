@@ -3,6 +3,7 @@
 #include "scenetype.h" 
 #include "TitleScene.h"
 #include "SceneFactory.h"
+#include "Publisher.h"
 
 const unsigned int Game::DEFAULT_GAME_TIME = 30;
 
@@ -41,7 +42,7 @@ void Game::update()
 		}
 		else if (nextSceneInfo.currentSceneType == SceneType::END_SCENE)
 		{
-			if (music.Playing == music.getStatus())
+			if (music.Playing == music.getStatus() || music.Paused == music.getStatus())
 			{
 				music.stop();
 			}
@@ -61,8 +62,8 @@ void Game::update()
 				if (nextSceneInfo.discardActiveScene)
 					popScene(false);
 				// ... soit on veut en ajouter une nouvelle
-				
-					nextScene = getNextScene(nextSceneInfo.nextSceneType);
+
+				nextScene = getNextScene(nextSceneInfo.nextSceneType);
 			}
 			if (nextScene != nullptr)
 				pushScene(nextScene, &nextSceneInfo);
@@ -78,6 +79,21 @@ void Game::draw()  const
 	}
 }
 
+void Game::notify(Event event, const void* /*data*/)
+{
+	if (event == Event::PlayOrPause)
+	{
+		if (music.Playing != music.getStatus())
+		{
+			music.play();
+		}
+		else
+		{
+			music.pause();
+		}
+	}
+}
+
 void Game::init()
 {
 	BaseGame::init();
@@ -86,6 +102,8 @@ void Game::init()
 
 	music.openFromFile("Assets\\Music\\Title\\SkyFire (Title Screen).ogg");
 	music.setLoop(true);
+
+	Publisher::addSubscriber(*this, Event::PlayOrPause);
 }
 
 void Game::uninit()
@@ -94,6 +112,8 @@ void Game::uninit()
 	{
 		popScene(false);
 	}
+
+	Publisher::removeSubscriber(*this, Event::PlayOrPause);
 }
 
 Scene* Game::getNextScene(SceneType type) const

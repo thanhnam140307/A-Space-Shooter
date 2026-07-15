@@ -47,6 +47,13 @@ void Hud::initialize(const ContentManager& contentManager)
 	sf::FloatRect smartGunBonusRect = smartGunBonus.getLocalBounds();
 	smartGunBonus.setOrigin(smartGunBonusRect.width / BaseGame::HALF, smartGunBonusRect.height / BaseGame::HALF);
 	smartGunBonus.setPosition(nbOfSmartGunText.getPosition().x - 30.0f, nbOfSmartGunText.getPosition().y + 10.0f);
+
+	pauseText.setFont(font);
+	pauseText.setCharacterSize(50);
+	pauseText.setOutlineColor(sf::Color::White);
+	pauseText.setPosition(float(Game::GAME_WIDTH / 2 - 50), float(Game::GAME_HEIGHT / 2 - 50));
+	sf::FloatRect pauseTextRect = pauseText.getLocalBounds();
+	pauseText.setOrigin(pauseTextRect.width / BaseGame::HALF, pauseTextRect.height / BaseGame::HALF);
 }
 
 void Hud::setScoreText(const int score)
@@ -64,6 +71,14 @@ void Hud::setNbOfSmartGunText(const int nbOfSmartGun)
 	nbOfSmartGunText.setString(std::to_string(nbOfSmartGun));
 }
 
+void Hud::setPauseText(const bool isPaused)
+{
+	pauseText.setString("");
+
+	if (isPaused)
+		pauseText.setString("||");
+}
+
 void Hud::draw(sf::RenderWindow& window) const
 {
 	window.setView(hudView);
@@ -72,4 +87,5 @@ void Hud::draw(sf::RenderWindow& window) const
 	window.draw(healthText);
 	window.draw(smartGunBonus);
 	window.draw(nbOfSmartGunText);
+	window.draw(pauseText);
 }

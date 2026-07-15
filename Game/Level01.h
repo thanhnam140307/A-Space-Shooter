@@ -68,6 +68,8 @@ private:
 	PlayerBullet& getAvailablePlayerBullet();
 	EnemyBullet& getAvailableEnemyBullet();
 
+	bool isInPause;
+
 	void gameOver();
 	void removeSmartGun();
 	void spawnBoss();
