@@ -43,8 +43,6 @@ CTestTestfile.cmake
 *.cache
 
 # Executables and libraries
-*.exe
-*.dll
 *.lib
 *.exp
 
