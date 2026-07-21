@@ -1,72 +1,17 @@
-# Build folders
-[Bb]in/
-[Oo]bj/
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-ARM/
-ARM64/
+# Build files
+build/
+Debug/
+Release/
 
-# Visual Studio cache and temporary files
+# Visual Studio
 .vs/
-*.VC.db
-*.VC.opendb
 *.suo
 *.user
-*.userosscache
-*.sln.docstates
 
-# IntelliSense
-ipch/
-*.ipch
-
-# CMake (if used)
+# CMake
 CMakeFiles/
 CMakeCache.txt
-cmake_install.cmake
-compile_commands.json
-Testing/
-CTestTestfile.cmake
 
-# Generated files
-*.obj
-*.o
-*.pch
-*.pdb
-*.idb
-*.ilk
-*.tlog
-*.lastbuildstate
-*.log
+# Ignore les fichiers temporaires
 *.tmp
-*.cache
-
-# Executables and libraries
-*.exe
-*.dll
-*.lib
-*.exp
-
-# Profiling
-*.psess
-*.vsp
-*.vspx
-
-# Visual Studio Installer
-.vsconfig.user
-
-# NuGet
-packages/
-*.nupkg
-
-# ReSharper
-_ReSharper*/
-*.DotSettings.user
-
-# Rider
-.idea/
-
-# Windows
-Thumbs.db
-Desktop.ini
+*.log
