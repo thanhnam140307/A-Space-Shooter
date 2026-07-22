@@ -6,7 +6,6 @@ Release/
 # Visual Studio
 .vs/
 *.suo
-*.user
 
 # CMake
 CMakeFiles/
